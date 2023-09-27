@@ -1,0 +1,75 @@
+/* custom_styles.css */
+
+/* Body and Container Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Styles */
+.card {
+    border: none;
+    margin-bottom: 100px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 18rem;
+    height:200px;
+}
+
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333333;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555555;
+}
+
+/* Detail Styles */
+.card-text strong {
+    font-weight: bold;
+}
+
+.ingredient-list, .step-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.ingredient-list li, .step-list li {
+    font-size: 1rem;
+    color: #555555;
+}
+
+/* Responsive Styles */
+@media (max-width: 576px) {
+    .card-img-top {
+        border-radius: 10px;
+        width:50%;
+        height:50%;
+    }
+}
+
+.image-container {
+    text-align: center; /* Center the image */
+    margin-bottom: 20px; /* Add some space between image and content */
+}
+
+.card-img-top {
+     /* Make sure the image doesn't overflow its container */
+    width:50%;
+    height:50%;
+}

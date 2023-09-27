@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if user.is_authenticated and user == drinks.author %}
+<a href="{% url 'edit_drink' slug=drinks.slug %}" class="btn btn-primary">Edit drink</a>
+        <a href="{% url 'destroy_drinks' slug=drinks.slug %}" class="btn btn-danger">Delete drink</a>
+       {% endif %}
+    <div class="container mt-5">
+    <div class = "image-container">
+    <img src="{{ drinks.image.url }}" class="card-img-top" alt="{{ drinks.title }}">
+        </div>
+    <h5 class="card-title">{{ drinks.title }}</h5>
+    <p class="card-text">{{ drinks.description }}</p>
+    <p class="card-text">Time: {{ drinks.time }}</p>
+    <p class="card-text">Category: {{ drinks.get_category_display }}</p>
+    <p class="card-text">Difficulty: {{ drinks.get_difficulty_display }}</p>
+    <p class="card-text">Season: {{ drinks.get_season_display }}</p>
+    <p class="card-text">Ingredients: {{ drinks.ingredients }}</p>
+    <p class="card-text">Steps: {{ drinks.steps }}</p>
+  </div>
+{% endblock %}

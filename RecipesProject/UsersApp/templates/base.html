@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Hello World Django Project{%  endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Your Logo</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+          {% if user.is_staff %}
+        <a class="nav-link" href="{% url 'show' %}">Admin Pannel <span class="sr-only">(current)</span></a>
+              {% else %}
+          {% endif %}
+
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'recipes' %}">Recipes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Categories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About Us</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {% if user.is_authenticated %}
+              <img src="{{ profile_pics }}" alt="Profile Image" class="rounded-circle" style="width: 50px; height: 50px;">
+            {% else %}
+
+            {% endif %}
+        </a>
+          <div style="margin-right: 150px">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="margin-right: 100px">
+        {% if user.is_authenticated %}
+            <a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-cogs"></i> Profile</a>
+          <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'settings' user.id %}"><i class="fas fa-cogs"></i> Settings</a>
+          <a class="dropdown-item" href="{% url 'change_password' %}"><i class="fas fa-key"></i> Change Password</a>
+            {% else %}
+
+            {% endif %}
+
+            {% if user.is_authenticated %}
+          <a class="dropdown-item" href="{% url 'user_logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                {% else %}
+                <a class="dropdown-item" href="{% url 'user_login' %}"><i class="fas fa-sign-out-alt"></i> Login</a>
+            {% endif %}
+          <!-- Add more items as needed -->
+        </div>
+              </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container mt-5">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Hello, World!</h1>
+        <p class="lead">This is a simple Django project with Bootstrap.</p>
+        <hr class="my-4">
+        {% block content %}<p>Feel free to customize and build upon this project!</p>{% endblock %}
+    </div>
+</div>
+
+<!-- Bootstrap JS (optional, for certain components) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="content-section">
+    <div class="row">
+      {% for recip in recipe %}
+        <div class="col-md-4 mb-4">
+          <div class="card" style="width: 18rem;">
+            <img src="{{ recip.image.url }}" class="card-img-top" alt="{{ recip.title }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ recip.title }}</h5>
+              <p class="card-text">{{ recip.description }}</p>
+              <p class="card-text">Time: {{ recip.time }}</p>
+                <a href="{{ recip.get_absolute_url }}" class="btn btn-primary">View Recipe</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+      {% for drink in drinks %}
+        <div class="col-md-4 mb-4">
+          <div class="card" style="width: 18rem;">
+            <img src="{{ drink.image.url }}" class="card-img-top" alt="{{ drink.title }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ drink.title }}</h5>
+              <p class="card-text">{{ drink.description }}</p>
+              <p class="card-text">Time: {{ drink.time }}</p>
+                <a href="{{ drink.get_absolute_url }}" class="btn btn-primary">View Drink</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}

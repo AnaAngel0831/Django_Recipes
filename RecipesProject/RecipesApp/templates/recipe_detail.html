@@ -1,0 +1,22 @@
+<!-- recipe_detail.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+    {% if user.is_authenticated and user == recipe.author %}
+    <a href="{% url 'edit_recipes' slug=recipe.slug %}" class="btn btn-primary">Edit recipe</a>
+        <a href="{% url 'destroy_recipes' slug=recipe.slug %}" class="btn btn-danger">Delete Recipe</a>
+    {% endif %}
+    <div class="container mt-5">
+    <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
+    <h5 class="card-title">{{ recipe.title }}</h5>
+    <p class="card-text">{{ recipe.description }}</p>
+    <p class="card-text">Time: {{ recipe.time }}</p>
+    <p class="card-text">Category: {{ recipe.get_category_display }}</p>
+    <p class="card-text">Difficulty: {{ recipe.get_difficulty_display }}</p>
+    <p class="card-text">Season: {{ recipe.get_season_display }}</p>
+    <p class="card-text">Ingredients: {{ recipe.ingredients }}</p>
+    <p class="card-text">Steps: {{ recipe.steps }}</p>
+  </div>
+
+{% endblock %}

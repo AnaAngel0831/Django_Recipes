@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% load static %}
+  <div class="content-section">
+    <div class="row mb-4"> <!-- Add mb-4 class here for margin-bottom -->
+      <div class="content-section">
+        <a href="{% url 'create_recipe' %}" class="btn btn-primary">Create recipe</a>
+        <a href="{% url 'create_drink' %}" class="btn btn-primary">Create drink</a>
+      </div>
+    </div>
+    <div class="row">
+      {% for recipe in recipes %}
+        <div class="col-md-4 mb-4">
+          <div class="card" style="width: 18rem;">
+            <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ recipe.title }}</h5>
+              <p class="card-text">{{ recipe.description }}</p>
+              <p class="card-text">Time: {{ recipe.time }}</p>
+              <a href="{{ recipe.get_absolute_url }}" class="btn btn-primary">View Recipe</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+      {% for drink in drinks %}
+        <div class="col-md-4 mb-4">
+          <div class="card" style="width: 18rem;">
+            <img src="{{ drink.image.url }}" class="card-img-top" alt="{{ drink.title }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ drink.title }}</h5>
+              <p class="card-text">{{ drink.description }}</p>
+              <p class="card-text">Time: {{ drink.time }}</p>
+                <a href="{{ drink.get_absolute_url }}" class="btn btn-primary">View Drink</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock content %}
